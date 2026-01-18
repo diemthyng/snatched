@@ -1,7 +1,5 @@
 # WWW-design
 
-**Help & Setup Page**
-
 ## Setup
 
 We are using the following three core technologies: **VSCode, Git, and Vercel**. You are free to experiment with other services or tools, but for the sake of consistency and easier troubleshooting with your peers, we recommend sticking with this shared environment.
@@ -27,13 +25,9 @@ Git is required for version control and for interacting with GitHub. Install it 
 
 Our course repository is hosted on GitHub. To work independently, you will need your own copy of the repository. This is done by **forking** the main repository:
 
-1. Open the course repository link: [Y2K Swag Webdesign Course](https://github.com/maaaaaaaaaaaaaaaax/y2k-swag-webdesign-course)
+1. Open the course repository link: [www-design](https://github.com/maaaaaaaaaaaaaaaax/www-design)
 2. Click the **Fork** button in the top right corner – this creates a copy of the repository under your account.
-3. Clone your forked repository locally using Git:
-
-   ```bash
-   git clone https://github.com/your-username/y2k-swag-webdesign-course.git
-   ```
+3. Clone your forked repository locally using Git: [https://docs.github.com/de/repositories/creating-and-managing-repositories/cloning-a-repository](https://docs.github.com/de/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 ### Vercel
 
@@ -58,7 +52,7 @@ Most of the rendering logic is located in `modules/render`. Only make changes he
 
 Development workflow:
 
-* Add new assets and content into their dedicated folders.
+* Add new assets and content into their dedicated folders: `/assets`, `/content`.
 * Always run `./generate-file-array.sh` after updating content to refresh the file index.
 * Write your own custom CSS classes and animations 
 * Manually integrate HTML or JavaScript into your app
@@ -74,10 +68,11 @@ In case the original repository needs to be updated, you need to sync your forke
 2. Collect all recent updates: `git fetch upstream`
 3. Integrate the updates into your main branch: `git merge upstream/main`
 
+Find more information here: [https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork](https://docs.github.com/de/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
 
-## Further Resources and Self-Help
+## Further Resources
 
-If you encounter problems, use the following resources before asking for direct support:
+If you encounter problems, consider the following resources:
 
 * **VSCode Documentation**: [VSCode Docs](https://code.visualstudio.com/docs)
 * **Git Documentation**: [Git Docs](https://git-scm.com/doc)
