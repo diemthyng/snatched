@@ -5,28 +5,31 @@ TARGET_DIR="./content"
 
 echo "export const content = [" > $OUTPUT
 
-# Generate array with file metadata including modification times
+# Generate array with file metadata including folder creation times
 # Sort files by name for consistency
 find $TARGET_DIR -type f | sort | while read -r file; do
-  # Get file modification time as ISO string
+  # Get the parent folder of the file
+  parent_dir=$(dirname "$file")
+
+  # Get folder creation time (birth time) as ISO string
   if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
-    mod_time=$(stat -f "%Sm" -t "%Y-%m-%dT%H:%M:%SZ" "$file")
+    # macOS - use %SB for birth time (creation time) of the parent folder
+    mod_time=$(stat -f "%SB" -t "%Y-%m-%dT%H:%M:%SZ" "$parent_dir")
   elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
     # Windows (Git Bash, MSYS2, Cygwin, or WSL)
     if command -v powershell.exe &> /dev/null; then
-      # Use PowerShell to get modification time
-      mod_time=$(powershell.exe -Command "(Get-Item '$file').LastWriteTime.ToString('yyyy-MM-ddTHH:mm:ssZ')" 2>/dev/null | tr -d '\r')
+      # Use PowerShell to get creation time of the folder
+      mod_time=$(powershell.exe -Command "(Get-Item '$parent_dir').CreationTime.ToString('yyyy-MM-ddTHH:mm:ssZ')" 2>/dev/null | tr -d '\r')
     elif command -v stat &> /dev/null; then
-      # Fallback to stat if available (WSL or Cygwin with coreutils)
-      mod_time=$(stat -c "%y" "$file" | sed 's/ /T/' | sed 's/\.[0-9]* /Z/' | sed 's/+[0-9]*/Z/')
+      # Fallback to stat - use modification time as creation time may not be available
+      mod_time=$(stat -c "%w" "$parent_dir" 2>/dev/null || stat -c "%y" "$parent_dir" | sed 's/ /T/' | sed 's/\.[0-9]* /Z/' | sed 's/+[0-9]*/Z/')
     else
-      # Last resort: use ls and parse the output (less reliable)
+      # Last resort: use current date
       mod_time=$(date -Iseconds)
     fi
   else
-    # Linux and other Unix-like systems
-    mod_time=$(stat -c "%y" "$file" | sed 's/ /T/' | sed 's/\.[0-9]* /Z/' | sed 's/+[0-9]*/Z/')
+    # Linux - use %w for birth time if available, fall back to modification time
+    mod_time=$(stat -c "%w" "$parent_dir" 2>/dev/null | grep -v '-' || stat -c "%y" "$parent_dir" | sed 's/ /T/' | sed 's/\.[0-9]* /Z/' | sed 's/+[0-9]*/Z/')
   fi
   
   # Get file extension to determine type
