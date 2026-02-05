@@ -1,0 +1,11 @@
+Project architecture (brief)
+
+- index.html defines the page structure.
+- styles.css controls the visual design.
+- script.js loads content and initializes rendering.
+- content/ holds all blog content (text, images, audio, video).
+- assets/ holds shared media files.
+- modules/render/ contains the rendering logic used by script.js.
+- generate-file-array.sh scans content/ and creates the file list used by the app.
+
+Do not touch the JS modules in modules/render/ for now.
