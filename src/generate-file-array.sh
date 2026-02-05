@@ -40,6 +40,10 @@ find $TARGET_DIR -type f | sort | while read -r file; do
     file_type="TXT"
   elif [[ "$extension" =~ ^(jpg|jpeg|png|gif|webp|svg|bmp)$ ]]; then
     file_type="IMAGE"
+  elif [[ "$extension" =~ ^(mp3|wav|ogg|m4a|flac|aac)$ ]]; then
+    file_type="AUDIO"
+  elif [[ "$extension" =~ ^(mp4|webm|mov|avi|mkv)$ ]]; then
+    file_type="VIDEO"
   else
     file_type="null"
   fi

@@ -24,11 +24,11 @@ body.theme-cali .header-logo {
 
 body.theme-cali h1 {
   font-weight: 300;
-  color: #8b7355;
+  color: #3700ff;
   text-shadow: none;
   font-family: 'Georgia', serif;
   text-align: center;
-  font-size: 48px;
+  font-size: 72px;
 }
 
 @media (min-width: 600px) {
@@ -84,6 +84,19 @@ body.theme-cali img {
   margin-bottom: 24px;
 }
 
+body.theme-cali audio {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+body.theme-cali video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
 body.theme-cali .text {
   margin-bottom: 24px;
 }
@@ -126,6 +139,19 @@ body.theme-grid img {
   object-fit: cover;
   display: block;
   margin: 0;
+}
+
+body.theme-grid audio {
+  width: 100%;
+  background: #111;
+  padding: 16px;
+}
+
+body.theme-grid video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 body.theme-grid .text {
@@ -198,6 +224,18 @@ body.theme-sleek .time-stamp {
 }
 
 body.theme-sleek img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 8px 0 32px;
+}
+
+body.theme-sleek audio {
+  width: 100%;
+  margin: 8px 0 32px;
+}
+
+body.theme-sleek video {
   width: 100%;
   height: auto;
   border-radius: 8px;
@@ -288,6 +326,18 @@ body.theme-dark img {
   margin: 8px 0 24px;
 }
 
+body.theme-dark audio {
+  width: 100%;
+  margin: 8px 0 24px;
+}
+
+body.theme-dark video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 8px 0 24px;
+}
+
 body.theme-dark .folder-group {
   background: #111;
   border: 1px solid #222;
@@ -354,7 +404,7 @@ body.theme-bg h1 {
   font-weight: 500;
   text-align: center;
   color: #fff;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px);
   padding: 12px 24px;
   border-radius: 8px;
@@ -367,7 +417,7 @@ body.theme-bg .text {
   font-size: 14px;
   line-height: 1.6;
   color: #fff;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(20px);
   padding: 16px;
   border-radius: 10px;
@@ -376,7 +426,7 @@ body.theme-bg .text {
 
 body.theme-bg .time-stamp {
   font-size: 11px;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 32px 0 8px;
@@ -389,8 +439,20 @@ body.theme-bg img {
   margin: 8px 0;
 }
 
+body.theme-bg audio {
+  width: 100%;
+  margin: 8px 0;
+}
+
+body.theme-bg video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
 body.theme-bg .folder-group {
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(20px);
   border-radius: 14px;
   padding: 20px;
@@ -402,25 +464,38 @@ body.theme-bg .folder-group::before {
   display: block;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 body.theme-bg .folder-group .text {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 body.theme-bg > p:last-of-type {
   margin-top: 48px;
   text-align: center;
   font-size: 13px;
-  color: rgba(255,255,255,0.7);
-  background: rgba(0,0,0,0.35);
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(20px);
   padding: 14px 20px;
   border-radius: 8px;
+}
+
+/* ============================================
+   Shared: Media Error Styles
+   ============================================ */
+
+.media-error {
+  color: #e74c3c;
+  font-size: 14px;
+  padding: 12px;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 6px;
+  margin: 8px 0;
 }

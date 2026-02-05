@@ -44,3 +44,45 @@ export function displayTimeStamp(date, container) {
   )}</pre>`;
   container.appendChild(section);
 }
+
+export function displayAudio(file, container) {
+  return new Promise((resolve) => {
+    const section = document.createElement("section");
+    const audio = document.createElement("audio");
+    audio.src = file;
+    audio.controls = true;
+
+    audio.onloadedmetadata = () => {
+      section.appendChild(audio);
+      container.appendChild(section);
+      resolve();
+    };
+
+    audio.onerror = () => {
+      section.innerHTML = `<p class="media-error">Could not load audio: ${file}</p>`;
+      container.appendChild(section);
+      resolve();
+    };
+  });
+}
+
+export function displayVideo(file, container) {
+  return new Promise((resolve) => {
+    const section = document.createElement("section");
+    const video = document.createElement("video");
+    video.src = file;
+    video.controls = true;
+
+    video.onloadedmetadata = () => {
+      section.appendChild(video);
+      container.appendChild(section);
+      resolve();
+    };
+
+    video.onerror = () => {
+      section.innerHTML = `<p class="media-error">Could not load video: ${file}</p>`;
+      container.appendChild(section);
+      resolve();
+    };
+  });
+}

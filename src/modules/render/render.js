@@ -1,5 +1,5 @@
 import { content } from './content.js'
-import { displayImage, displayText, displayTimeStamp } from './display.js'
+import { displayImage, displayText, displayTimeStamp, displayAudio, displayVideo } from './display.js'
 import { fetchSortedFiles } from './fetch.js'
 
 const container = document.getElementById('text-files-container')
@@ -40,6 +40,10 @@ export async function renderFiles() {
       await displayText(fileInfo.file, targetContainer)
     } else if (fileInfo.fileType === 'IMAGE') {
       await displayImage(fileInfo.file, targetContainer)
+    } else if (fileInfo.fileType === 'AUDIO') {
+      await displayAudio(fileInfo.file, targetContainer)
+    } else if (fileInfo.fileType === 'VIDEO') {
+      await displayVideo(fileInfo.file, targetContainer)
     }
   }
 }
